@@ -1,0 +1,146 @@
+{
+  "student": {
+    "student_id": "202220882",
+    "name": "박경민",
+    "team_members": [],
+    "course": "Automatic Control - 2026 Spring",
+    "ai_usage": "OpenAI Codex was used for repository inspection, controller scaffolding, preliminary tuning support, and report drafting. Final MATLAB execution and numeric validation were performed by the student."
+  },
+  "timestamp": "2026-06-22T15:22:12",
+  "quantitative": {
+    "score": 60.784704499301355,
+    "max": 70,
+    "pct": 86.835292141859085
+  },
+  "deductions": {
+    "amount": 0,
+    "reasons": []
+  },
+  "errors": [],
+  "breakdown": [
+    {
+      "sid": "A3",
+      "kpi": "yawRateOvershoot",
+      "value": 1.9854388965381973,
+      "target": 10,
+      "score": 4,
+      "max": 4
+    },
+    {
+      "sid": "A3",
+      "kpi": "yawRateRiseTime",
+      "value": 0.18199999999999994,
+      "target": 0.3,
+      "score": 4,
+      "max": 4
+    },
+    {
+      "sid": "A3",
+      "kpi": "yawRateSettling",
+      "value": 0.31600000000000006,
+      "target": 0.8,
+      "score": 4,
+      "max": 4
+    },
+    {
+      "sid": "A1",
+      "kpi": "sideSlipMax",
+      "value": 2.6068672037949971,
+      "target": 3,
+      "score": 6,
+      "max": 6
+    },
+    {
+      "sid": "A1",
+      "kpi": "LTR_max",
+      "value": 0.71470181956196976,
+      "target": 0.6,
+      "score": 4.0441515036502516,
+      "max": 5
+    },
+    {
+      "sid": "A1",
+      "kpi": "lateralDevMax",
+      "value": 1.8485461773767189,
+      "target": 0.7,
+      "score": 0,
+      "max": 4
+    },
+    {
+      "sid": "A4",
+      "kpi": "understeerGradient",
+      "value": 0.00074854198877711739,
+      "target": 0.003,
+      "score": 5,
+      "max": 5
+    },
+    {
+      "sid": "A4",
+      "kpi": "sideSlipMax",
+      "value": 1.1830841790852593,
+      "target": 2,
+      "score": 5,
+      "max": 5
+    },
+    {
+      "sid": "A7",
+      "kpi": "sideSlipMax",
+      "value": 1.7936123744096555,
+      "target": 5,
+      "score": 8,
+      "max": 8
+    },
+    {
+      "sid": "A7",
+      "kpi": "LTR_max",
+      "value": 0.34501846001722247,
+      "target": 0.7,
+      "score": 7,
+      "max": 7
+    },
+    {
+      "sid": "B1",
+      "kpi": "stoppingDistance",
+      "value": 47.508797695483544,
+      "target": 40,
+      "score": 3.122800576129114,
+      "max": 5
+    },
+    {
+      "sid": "B1",
+      "kpi": "absSlipRMS",
+      "value": 0.098584129334720522,
+      "target": 0.1,
+      "score": 5,
+      "max": 5
+    },
+    {
+      "sid": "D1",
+      "kpi": "sideSlipMax",
+      "value": 3.7607218671558216,
+      "target": 4,
+      "score": 4,
+      "max": 4
+    },
+    {
+      "sid": "D1",
+      "kpi": "LTR_max",
+      "value": 0.71467427414340312,
+      "target": 0.6,
+      "score": 1.6177524195219894,
+      "max": 2
+    },
+    {
+      "sid": "D1",
+      "kpi": "lateralDevMax",
+      "value": 1.8485461773767189,
+      "target": 1,
+      "score": 0,
+      "max": 2
+    }
+  ],
+  "final_auto": 60.784704499301355,
+  "ctrl_signature": "70e5d94f3b5420bed581654bc1313da2319589fb08f350b8dd0dea698acf4e9e",
+  "matlab_version": "25.1 (R2025a)",
+  "solver_used": "ode45"
+}
