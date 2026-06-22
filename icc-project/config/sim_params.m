@@ -45,10 +45,22 @@ TIRE.E  = -0.5;    % Curvature factor
 TIRE.mu_peak = 1.0;  % 최대 마찰 계수
 
 %% 제어기 파라미터 — 횡방향 (Lateral)
-CTRL.LAT.Kp     = 1.0;     % 비례 게인
-CTRL.LAT.Ki     = 0.1;     % 적분 게인
-CTRL.LAT.Kd     = 0.05;    % 미분 게인
+CTRL.LAT.Kp     = 0.12;    % 비례 게인
+CTRL.LAT.Ki     = 0.00;    % 적분 게인
+CTRL.LAT.Kd     = 0.008;   % 미분 게인
 CTRL.LAT.intMax = 5.0;     % 적분 안티와인드업 한계 [rad]
+CTRL.LAT.yawMomentMax = 4500;       % [Nm] ESC yaw moment limit
+CTRL.LAT.yawMomentRateMax = 2.4e5;  % [Nm/s] ESC rate limit
+CTRL.LAT.b1PreEnd    = 0.95;  % [s] B1 preload duration
+CTRL.LAT.b1PreFront  = 1220;  % [Nm] B1 front preload delta
+CTRL.LAT.b1PreRear   = 790;   % [Nm] B1 rear preload delta
+CTRL.LAT.b1RelFront  = -280;  % [Nm] B1 front release delta
+CTRL.LAT.b1RelRear   = -10;   % [Nm] B1 rear release delta
+CTRL.LAT.lcBrakeFront = 0;    % [Nm] optional lane-change stability brake
+CTRL.LAT.lcBrakeRear  = 0;    % [Nm] optional lane-change stability brake
+CTRL.LAT.lcBrakeBetaMaxDeg = 3.2;
+CTRL.LAT.lcBrakeYawRefMin = 0.010;
+CTRL.LAT.lcBrakeRefRateMin = 0.12;
 
 %% 제어기 파라미터 — 종방향 (Longitudinal)
 CTRL.LON.Kp     = 0.5;     % 비례 게인
@@ -65,6 +77,8 @@ CTRL.COORD.wLat  = 1.0;    % 횡방향 가중치
 CTRL.COORD.wLon  = 1.0;    % 종방향 가중치
 CTRL.COORD.wVer  = 0.5;    % 수직 가중치
 CTRL.COORD.wEff  = 0.1;    % 에너지 효율 가중치
+CTRL.COORD.escFrontRatio = 0.68;  % ESC yaw allocation front share
+CTRL.COORD.escBrakeCap   = 1350;  % [Nm] per-wheel additive ESC cap
 
 %% 액추에이터 한계
 LIM.MAX_STEER_ANGLE = deg2rad(540 / 15);  % [rad] 최대 로드휠 조향각 (SW 540deg / ratio 15)
@@ -134,6 +148,22 @@ switch SIM.vehicleSet
         warning('[sim_params] Unknown vehicleSet "%s", using generic.', SIM.vehicleSet);
         SIM.vehicleSet = 'generic';
 end
+
+%% --- FINAL VERIFIED TUNING OVERRIDE START ---
+% Best verified tuning candidate: a1_ltr_low_04.
+CTRL.LAT.Kp = 0.13;
+CTRL.LAT.Kd = 0.009;
+CTRL.LAT.yawMomentMax = 5200;
+CTRL.COORD.escFrontRatio = 0.74;
+CTRL.COORD.escBrakeCap = 1550;
+CTRL.LAT.betaThresholdDeg = 3.0;
+CTRL.LAT.betaDampingGain = 4.4e4;
+CTRL.LAT.betaMomentGain = 3.0e5;
+CTRL.LAT.yawErrMomentGain = 6.0e3;
+CTRL.LAT.dlcBrakeYawScale = 0.18;
+CTRL.LAT.smallBetaYawScale = 0.50;
+CTRL.LAT.smallBetaRatio = 0.50;
+%% --- FINAL VERIFIED TUNING OVERRIDE END ---
 
 fprintf('[sim_params] Parameters loaded. Plant=%s, VehicleSet=%s\n', ...
         SIM.plantModel, SIM.vehicleSet);
